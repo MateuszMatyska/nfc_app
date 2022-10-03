@@ -5589,6 +5589,11 @@ react-native-codegen@^0.0.7:
     jscodeshift "^0.11.0"
     nullthrows "^1.1.1"
 
+react-native-nfc-card-reader@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/react-native-nfc-card-reader/-/react-native-nfc-card-reader-1.0.6.tgz#7ef7dc62811bebda62b81b6f0b24568be2632b14"
+  integrity sha512-W4oulht3XBWXeDSrhrqeg6F06tWMnggfC/sDrcWy0vqcA3IIdhbTzMv5mlc9YEhV3WymTGU6wwaeAGyO1zEFgA==
+
 react-native-safe-area-context@^4.3.4:
   version "4.3.4"
   resolved "https://registry.yarnpkg.com/react-native-safe-area-context/-/react-native-safe-area-context-4.3.4.tgz#79060fcc02ef38d6fd7afdf87b2301b06bd99fe9"

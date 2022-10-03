@@ -3,10 +3,10 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import {combineReducers} from 'redux';
 import {persistReducer} from 'redux-persist';
 import thunk from 'redux-thunk';
-import CounterSlice from './Slices/CounterSlice';
+import CardSlice from './Slices/CardSlice';
 
 const reducers = combineReducers({
-  counter: CounterSlice,
+  cards: CardSlice,
 });
 
 const persistConfig = {
