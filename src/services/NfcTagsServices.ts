@@ -1,39 +1,38 @@
-import NfcManager, {NfcTech, Ndef} from 'react-native-nfc-manager';
+import NfcManager, {NfcTech, Ndef, TagEvent} from 'react-native-nfc-manager';
 
 export const readTag = async () => {
   NfcManager.start();
+  let tagResult: TagEvent | undefined;
+
   try {
-    // register for the NFC tag with NDEF in it
     await NfcManager.requestTechnology(NfcTech.Ndef);
-    // the resolved tag object will contain `ndefMessage` property
     const tag = await NfcManager.getTag();
-    console.warn('Tag found', tag);
+    if (tag) {
+      tagResult = tag;
+    }
   } catch (ex) {
     console.warn('Oops!', ex);
   } finally {
-    // stop the nfc scanning
     NfcManager.cancelTechnologyRequest();
   }
+
+  return tagResult;
 };
 
-export const writeTag = async () => {
+export const writeTag = async (message: string) => {
   let result = false;
 
   try {
-    // STEP 1
     await NfcManager.requestTechnology(NfcTech.Ndef);
-
-    const bytes = Ndef.encodeMessage([Ndef.textRecord('Hello NFC')]);
+    const bytes = Ndef.encodeMessage([Ndef.textRecord(message)]);
 
     if (bytes) {
-      await NfcManager.ndefHandler // STEP 2
-        .writeNdefMessage(bytes); // STEP 3
+      await NfcManager.ndefHandler.writeNdefMessage(bytes);
       result = true;
     }
   } catch (ex) {
     console.warn(ex);
   } finally {
-    // STEP 4
     NfcManager.cancelTechnologyRequest();
   }
 
