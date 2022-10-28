@@ -11,7 +11,7 @@ import TagsScreen from '../../screens/tagsScreen/TagsScreen';
 const Stack = createNativeStackNavigator();
 
 const AppStack: React.FC = () => (
-  <Stack.Navigator>
+  <Stack.Navigator screenOptions={{headerShown: false}}>
     <Stack.Screen name={ScreenNames.Login} component={LoginScreen} />
     <Stack.Screen name={ScreenNames.Home} component={HomeScreen} />
     <Stack.Screen name={ScreenNames.ScanCards} component={ScanCardScreen} />
