@@ -22,6 +22,20 @@ const HomeScreen: React.FC = () => {
             }}
           />
         </View>
+        <View>
+          <Button
+            title="Scan tags"
+            onPress={() => {
+              navigate(ScreenNames.ScanTags);
+            }}
+          />
+          <Button
+            title="Tags"
+            onPress={() => {
+              navigate(ScreenNames.Tags);
+            }}
+          />
+        </View>
       </View>
     </SafeAreaView>
   );

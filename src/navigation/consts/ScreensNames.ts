@@ -3,4 +3,6 @@ export enum ScreenNames {
   Login = 'LoginScreen',
   Cards = 'CardsScreen',
   ScanCards = 'ScanCardsScreen',
+  ScanTags = 'ScanTags',
+  Tags = 'Tags',
 }
