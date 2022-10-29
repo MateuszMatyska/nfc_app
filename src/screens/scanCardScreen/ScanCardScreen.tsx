@@ -1,9 +1,13 @@
 import React, {useState} from 'react';
-import {SafeAreaView, Text, View, Button} from 'react-native';
+import {Text, View} from 'react-native';
 import {useDispatch} from 'react-redux';
 import NfcCardReader from 'react-native-nfc-card-reader';
 import {addCard} from '../../store/Slices/CardSlice';
 import {CardType} from '../../types/CardType';
+import Container from '../../components/container/Container';
+import BasicButton from '../../components/buttons/basicButton/BasicButton';
+import Card from '../../components/card/Card';
+import {styles} from './ScanCardScreen.style';
 
 const ScanCardScreen: React.FC = () => {
   const dispatch = useDispatch();
@@ -30,29 +34,53 @@ const ScanCardScreen: React.FC = () => {
     }
   };
 
+  const clearCard = () => {
+    setCard(undefined);
+  };
+
   return (
-    <SafeAreaView>
-      <View>
-        <Text>Scan card</Text>
-        <Button
-          onPress={() => {
-            scanCard();
-          }}
-          title="Scan"
-        />
-        {card && (
-          <View>
-            <Text>{`${card.cardNumber}`}</Text>
-            <Button
-              onPress={() => {
-                saveCard();
-              }}
-              title="Save"
-            />
-          </View>
-        )}
+    <Container>
+      <View style={styles.container}>
+        <View style={[styles.container, styles.titleContainer]}>
+          <Text style={styles.title}>Scan Card</Text>
+        </View>
+        <View style={[styles.container, styles.cardContainer]}>
+          {card && (
+            <>
+              <View style={styles.cardInfoContainer}>
+                <Card card={card} />
+              </View>
+              <View style={styles.cardBtnRow}>
+                <View>
+                  <BasicButton
+                    onPress={() => {
+                      saveCard();
+                    }}
+                    title="Save"
+                  />
+                </View>
+                <View>
+                  <BasicButton
+                    onPress={() => {
+                      clearCard();
+                    }}
+                    title="Clear"
+                  />
+                </View>
+              </View>
+            </>
+          )}
+        </View>
+        <View style={[styles.container, styles.btnContainer]}>
+          <BasicButton
+            onPress={() => {
+              scanCard();
+            }}
+            title="Scan"
+          />
+        </View>
       </View>
-    </SafeAreaView>
+    </Container>
   );
 };
 
