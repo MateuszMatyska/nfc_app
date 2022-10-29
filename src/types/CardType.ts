@@ -2,6 +2,6 @@ export type CardType = {
   cardNumber: string;
   expiryDate: string;
   cardType: string;
-  firstName: string;
-  surname: string;
+  firstName: string | undefined;
+  surname: string | undefined;
 };

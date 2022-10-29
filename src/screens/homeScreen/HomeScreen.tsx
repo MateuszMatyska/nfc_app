@@ -4,6 +4,7 @@ import {ScreenNames} from '../../navigation/consts/ScreensNames';
 import {navigate} from '../../navigation/services/NavigationService';
 import Container from '../../components/container/Container';
 import IconButton from '../../components/buttons/iconButton/IconButton';
+import {faDatabase, faTags, faUserTag} from '@fortawesome/free-solid-svg-icons';
 import {faNfcSymbol} from '@fortawesome/free-brands-svg-icons/faNfcSymbol';
 import {styles} from './HomeScreen.style';
 
@@ -18,20 +19,20 @@ const HomeScreen: React.FC = () => {
           <View style={styles.menuRow}>
             <View>
               <IconButton
-                title="Cards"
+                title="Scan Cards"
                 onPress={() => {
-                  navigate(ScreenNames.Cards);
+                  navigate(ScreenNames.ScanCards);
                 }}
                 icon={faNfcSymbol}
               />
             </View>
             <View>
               <IconButton
-                title="Scan Cards"
+                title="Cards"
                 onPress={() => {
-                  navigate(ScreenNames.ScanCards);
+                  navigate(ScreenNames.Cards);
                 }}
-                icon={faNfcSymbol}
+                icon={faDatabase}
               />
             </View>
           </View>
@@ -42,7 +43,7 @@ const HomeScreen: React.FC = () => {
                 onPress={() => {
                   navigate(ScreenNames.ScanTags);
                 }}
-                icon={faNfcSymbol}
+                icon={faTags}
               />
             </View>
             <View>
@@ -51,7 +52,7 @@ const HomeScreen: React.FC = () => {
                 onPress={() => {
                   navigate(ScreenNames.Tags);
                 }}
-                icon={faNfcSymbol}
+                icon={faUserTag}
               />
             </View>
           </View>
